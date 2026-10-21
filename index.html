@@ -1,0 +1,285 @@
+<title>안수빈의 아침</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="러닝과 건강 컨설팅, 생성형 AI 콘텐츠를 공부하는 안수빈의 개인 홈페이지">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: 강변 아침 — 넓은 여백의 한 줄 흐름, 일요일 수업만 진한 강물색 밴드로 띄운다 */
+  :root {
+    --bg: #F2F5F0;          /* 새벽 강변 안개 */
+    --surface: #E5ECE3;
+    --ink: #16302A;         /* 강물 깊은 녹색 */
+    --muted: #4F6A61;
+    --line: #C9D6CC;
+    --river: #1F4D45;       /* 수업 밴드 */
+    --on-river: #EEF4EF;
+    --bloom: #E9B824;       /* 하중도 유채꽃 */
+    --bloom-ink: #2A2306;
+
+    --display: "Hahmlet", "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
+    --body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1B18; --surface: #16251F; --ink: #E3ECE6; --muted: #9DB3AA; --line: #2A3D36;
+      --river: #1A3B35; --on-river: #E8F1EC; --bloom: #F0C53F; --bloom-ink: #241D04;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1B18; --surface: #16251F; --ink: #E3ECE6; --muted: #9DB3AA; --line: #2A3D36;
+    --river: #1A3B35; --on-river: #E8F1EC; --bloom: #F0C53F; --bloom-ink: #241D04;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    word-break: keep-all;
+  }
+  .wrap {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--bloom); outline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.25; }
+  p { margin: 0; }
+  .label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* 상단 */
+  header.top .wrap {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding-block: 1.5rem;
+  }
+  .mark { font-family: var(--display); font-weight: 800; font-size: 1.125rem; text-decoration: none; }
+  nav { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.9375rem; }
+  nav a { text-decoration: none; color: var(--muted); }
+  nav a:hover { color: var(--ink); }
+
+  /* 히어로 */
+  .hero .wrap {
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem;
+    align-items: end; padding-block: 3.5rem 4.5rem;
+  }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 800; letter-spacing: -0.02em; }
+  .hero h1 em { font-style: normal; color: var(--river); position: relative; }
+  :root[data-theme="dark"] .hero h1 em { color: var(--bloom); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero h1 em { color: var(--bloom); } }
+  .hero .intro { margin-top: 1.5rem; max-width: 34rem; color: var(--muted); font-size: 1.125rem; }
+  .hero .intro strong { color: var(--ink); font-weight: 600; }
+
+  /* 케이던스 메트로놈 */
+  .cadence { border-top: 1px solid var(--line); padding-top: 1.25rem; display: grid; gap: 0.75rem; }
+  .steps { display: flex; gap: 0.5rem; align-items: center; }
+  .steps span {
+    width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--line);
+    animation: step 1s steps(1) infinite;
+  }
+  .steps span:nth-child(2) { animation-delay: 0.333s; }
+  .steps span:nth-child(3) { animation-delay: 0.667s; }
+  @keyframes step { 0% { background: var(--bloom); } 33% { background: var(--line); } }
+  @media (prefers-reduced-motion: reduce) { .steps span { animation: none; background: var(--bloom); } }
+  .cadence .num { font-family: var(--mono); font-size: 2.25rem; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cadence .num small { font-size: 0.875rem; color: var(--muted); margin-left: 0.35rem; }
+  .cadence p { font-size: 0.9375rem; color: var(--muted); }
+
+  /* 일요일 수업 밴드 */
+  .class { background: var(--river); color: var(--on-river); }
+  .class .wrap { padding-block: 4rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
+  .class .label { color: color-mix(in srgb, var(--on-river) 70%, transparent); }
+  .class h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); margin-top: 0.75rem; }
+  .class .lead { margin-top: 1.25rem; max-width: 30rem; color: color-mix(in srgb, var(--on-river) 85%, transparent); }
+  .ticket { display: grid; gap: 0; border: 1px solid color-mix(in srgb, var(--on-river) 25%, transparent); border-radius: 4px; }
+  .ticket > div {
+    display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding: 1rem 1.25rem;
+    border-bottom: 1px dashed color-mix(in srgb, var(--on-river) 25%, transparent);
+  }
+  .ticket > div:last-child { border-bottom: 0; }
+  .ticket dt { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--on-river) 65%, transparent); padding-top: 0.2rem; }
+  .ticket dd { margin: 0; }
+  .ticket .big { font-family: var(--mono); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  .next {
+    display: inline-block; margin-top: 0.25rem; padding: 0.15rem 0.6rem; border-radius: 999px;
+    background: var(--bloom); color: var(--bloom-ink); font-size: 0.8125rem; font-weight: 600;
+  }
+
+  /* 섹션 공통 */
+  section.block .wrap { padding-block: 4.5rem; }
+  section.block + section.block .wrap { border-top: 1px solid var(--line); }
+  .block-head { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 2rem; }
+  .block-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+
+  .work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; margin-top: 2.5rem; margin-left: 14rem; }
+  .work article { display: grid; gap: 0.6rem; align-content: start; }
+  .work h3 { font-size: 1.25rem; }
+  .work p { color: var(--muted); }
+  .tag { font-family: var(--mono); font-size: 0.75rem; color: var(--river); letter-spacing: 0.06em; }
+  :root[data-theme="dark"] .tag { color: var(--bloom); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: var(--bloom); } }
+
+  .likes { list-style: none; padding: 0; margin: 2.5rem 0 0 14rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+  .likes li { padding: 1.5rem 1.5rem 0 0; display: grid; gap: 0.4rem; align-content: start; }
+  .likes li + li { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .likes h3 { font-size: 1.375rem; }
+  .likes p { color: var(--muted); font-size: 0.9375rem; }
+
+  /* 마무리 */
+  footer .wrap { padding-block: 4rem 3rem; display: grid; gap: 1.25rem; border-top: 1px solid var(--line); }
+  footer .closing { font-family: var(--display); font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 600; max-width: 36rem; text-wrap: balance; }
+  footer small { color: var(--muted); font-family: var(--mono); font-size: 0.75rem; }
+
+  @media (max-width: 52rem) {
+    .hero .wrap, .class .wrap { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+    .block-head { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+    .work, .likes { margin-left: 0; }
+  }
+  @media (max-width: 36rem) {
+    nav { display: none; }
+    .work { grid-template-columns: minmax(0, 1fr); }
+    .likes { grid-template-columns: minmax(0, 1fr); }
+    .likes li, .likes li + li { padding: 1.25rem 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    .ticket > div { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">안수빈</a>
+    <nav aria-label="페이지 안내">
+      <a href="#class">일요 슬로우러닝</a>
+      <a href="#work">하는 일</a>
+      <a href="#likes">좋아하는 것</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label">Runner · Health Consultant · AI Creator</p>
+        <h1 style="margin-top:1rem">천천히 달리면<br><em>오래</em> 달립니다</h1>
+        <p class="intro">안녕하세요, <strong>안수빈</strong>입니다. 사람들이 자기 몸에 맞는 속도로 건강해지도록 돕고 있어요. 매주 일요일 아침에는 하중도에서 슬로우러닝을 가르치고, 평일에는 생성형 AI 콘텐츠를 공부합니다.</p>
+      </div>
+      <div class="cadence" aria-label="슬로우러닝 권장 케이던스">
+        <div class="steps" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p class="num">180<small>걸음/분</small></p>
+        <p>슬로우러닝의 기본 리듬이에요. 보폭은 짧게, 발 앞쪽으로 가볍게 착지하고, 옆 사람과 웃으며 대화할 수 있는 속도를 지킵니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="class" id="class">
+    <div class="wrap">
+      <div>
+        <p class="label">Sunday Slow Running Class</p>
+        <h2>일요일 아침 7시,<br>하중도에서 만나요</h2>
+        <p class="lead">달리기가 처음이어도, 숨이 금방 차는 분도 괜찮습니다. 걷는 것과 비슷한 속도에서 시작해 몸이 편안한 리듬을 함께 찾아요. 강바람 맞으며 한 시간 뛰고 나면 일요일이 길어집니다.</p>
+      </div>
+      <dl class="ticket">
+        <div>
+          <dt>언제</dt>
+          <dd><span class="big">매주 일 07:00</span><br><span class="next" id="next-class">다음 수업 계산 중</span></dd>
+        </div>
+        <div>
+          <dt>어디서</dt>
+          <dd>하중도 강변 산책로</dd>
+        </div>
+        <div>
+          <dt>속도</dt>
+          <dd>니코니코 페이스<br><span style="opacity:.75">숨이 차지 않고 미소가 남는 정도</span></dd>
+        </div>
+        <div>
+          <dt>준비물</dt>
+          <dd>편한 운동화, 물 한 병, 가벼운 마음</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">What I do</p>
+        <h2>몸을 돌보는 일과<br>이야기를 만드는 일</h2>
+      </div>
+      <div class="work">
+        <article>
+          <span class="tag">HEALTH CONSULTING</span>
+          <h3>건강 컨설팅</h3>
+          <p>생활 습관, 운동, 회복을 함께 살펴보고 무리 없이 이어갈 수 있는 계획을 세웁니다. 거창한 목표보다 오늘 할 수 있는 작은 실천을 찾는 데 집중해요.</p>
+        </article>
+        <article>
+          <span class="tag">GENERATIVE AI CONTENT</span>
+          <h3>생성형 AI 콘텐츠 배우기</h3>
+          <p>생성형 AI 콘텐츠 배우기를 하고 있습니다. 건강과 러닝에 관한 이야기를 더 많은 사람에게 쉽게 전하는 글, 이미지, 영상을 만드는 것이 목표예요.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="likes">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="label">Off duty</p>
+        <h2>좋아하는 것</h2>
+      </div>
+      <ul class="likes">
+        <li>
+          <span class="tag">RUN</span>
+          <h3>러닝</h3>
+          <p>기록보다 꾸준함. 가르치지 않는 날에도 혼자 천천히 달려요.</p>
+        </li>
+        <li>
+          <span class="tag">READ</span>
+          <h3>독서</h3>
+          <p>달리고 난 뒤 커피 한 잔과 책 한 권이 제일 좋은 회복입니다.</p>
+        </li>
+        <li>
+          <span class="tag">WATCH</span>
+          <h3>영화 보기</h3>
+          <p>한 편의 영화가 끝나고 남는 여운을 오래 곱씹는 편이에요.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="label">See you on Sunday</p>
+    <p class="closing">빨리 가지 않아도 괜찮아요. 일요일 아침, 하중도에서 같이 달려요.</p>
+    <small>© <span id="year">2026</span> 안수빈</small>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var el = document.getElementById("next-class");
+    var now = new Date();
+    var next = new Date(now);
+    next.setHours(7, 0, 0, 0);
+    var add = (7 - now.getDay()) % 7;
+    if (add === 0 && now >= next) add = 7;
+    next.setDate(next.getDate() + add);
+    var days = Math.round((new Date(next.getFullYear(), next.getMonth(), next.getDate()) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+    var when = days === 0 ? "오늘" : days === 1 ? "내일" : days + "일 뒤";
+    el.textContent = "다음 수업 " + (next.getMonth() + 1) + "월 " + next.getDate() + "일 · " + when;
+    document.getElementById("year").textContent = now.getFullYear();
+  })();
+</script>
